@@ -27,7 +27,9 @@ async function outGPIO(pitch, yaw, hover, on, counter){
 socket = io.connect('http://192.168.100.19:3000'); 
 socket.on('connect', () => {
     console.log('connected!');
-    socket.emit('get');
+    setTimeout(() => {
+        socket.emit('get');
+    }, 1000);
 });
 
 (async () => {
