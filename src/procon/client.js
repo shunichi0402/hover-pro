@@ -13,7 +13,8 @@ async function init(){
         gpio.setup(12, gpio.DIR_OUT)
         gpio.setup(15, gpio.DIR_OUT)
         gpio.setup(16, gpio.DIR_OUT)
-    })
+    });
+    return
 }
 
 async function outGPIO(pitch, yaw, hover, on, counter){
@@ -24,16 +25,17 @@ async function outGPIO(pitch, yaw, hover, on, counter){
     }
 }
 
-socket = io.connect('http://192.168.100.19:3000'); 
-socket.on('connect', () => {
-    console.log('connected!');
-    setTimeout(() => {
-        socket.emit('get');
-    }, 1000);
-});
-
 (async () => {
     await init();
+
+    socket = io.connect('http://192.168.100.19:3000');
+    socket.on('connect', () => {
+        console.log('connected!');
+        setTimeout(() => {
+            socket.emit('get');
+        }, 1000);
+    });
+
     socket.on('controll', (data) => {
         controll = JSON.parse(data);
         console.log(data);
