@@ -18,8 +18,10 @@ async function init(){
 
 async function outGPIO(pitch, yaw, hover, on, counter){
     if(on){
+        console.log('hover')
         gpio.write(8, hover);
     } else {
+        console.log('down')
         gpio.write(8, false);
     }
 }
