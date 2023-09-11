@@ -33,11 +33,14 @@ async function outGPIO(pitch, yaw, hover, on, counter){
         console.log('hover')
         gpio.write(3, hover);
 
-        const right = clanp(pitch * 0.7 + yaw * 0.7);
-        const left = clanp(pitch * 0.7 + yaw * (-0.7));
+        const right = clanp(pitch * 0.7 + yaw * (-0.7));
+        const left = clanp(pitch * 0.7 + yaw * (0.7));
         console.log(counter, parseInt(right * 10), parseInt(left * 10))
 
-        if (parseInt(right * 10) > counter) {
+        if (-0.2 < parseInt(right * 10) < 0.2){
+            gpio.write(12, false);
+            gpio.write(12, false);
+        }else if (parseInt(right * 10) > counter) {
             gpio.write(11, true);
             gpio.write(12, false);
             console.log('right on');
@@ -51,7 +54,10 @@ async function outGPIO(pitch, yaw, hover, on, counter){
             console.log('right off');
         }
 
-        if (parseInt(left * 10) > counter) {
+        if (-0.2 < parseInt(left * 10) < 0.2) {
+            gpio.write(12, false);
+            gpio.write(12, false);
+        }else if (parseInt(left * 10) > counter) {
             gpio.write(15, true);
             gpio.write(16, false);
             console.log('left on');
