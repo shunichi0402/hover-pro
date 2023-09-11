@@ -67,6 +67,10 @@ async function outGPIO(pitch, yaw, hover, on, counter){
     } else {
         console.log('down')
         gpio.write(8, false);
+        gpio.write(11, false);
+        gpio.write(12, false);
+        gpio.write(15, false);
+        gpio.write(16, false);
     }
 }
 
