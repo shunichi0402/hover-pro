@@ -85,7 +85,7 @@ async function outGPIO(pitch, yaw, hover, on, counter){
         controll = JSON.parse(data);
         console.log(data);
         socket.emit('get');
-        counter = counter + 1 % 10;
+        counter = (counter + 1) % 10;
         outGPIO(controll.pitch, controll.yaw, controll.hoverFlag, controll.onFlag, counter);
     });
 })();
