@@ -7,13 +7,12 @@ let controll = {};
 let counter = 0;
 
 async function init(){
-    await new Promise(() => {
-        gpio.setup(8, gpio.DIR_OUT)
-        gpio.setup(11, gpio.DIR_OUT)
-        gpio.setup(12, gpio.DIR_OUT)
-        gpio.setup(15, gpio.DIR_OUT)
-        gpio.setup(16, gpio.DIR_OUT)
-    });
+
+    gpio.setup(8, gpio.DIR_OUT)
+    gpio.setup(11, gpio.DIR_OUT)
+    gpio.setup(12, gpio.DIR_OUT)
+    gpio.setup(15, gpio.DIR_OUT)
+    gpio.setup(16, gpio.DIR_OUT)
     return
 }
 
