@@ -1,9 +1,11 @@
 from pyjoycon import JoyCon, get_L_id, get_R_id
-import time
 
 joycon_id = get_L_id()
-joycon = JoyCon(*joycon_id)
 
-while (True):
-    time.sleep(0.1)
-    print(joycon.get_status())
+if joycon_id[0] is None:
+    print('{"err":"joy-con not found."}')
+else:
+    joycon = JoyCon(*joycon_id)
+
+    while True:
+       print(joycon.get_status())
