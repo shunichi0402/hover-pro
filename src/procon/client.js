@@ -8,7 +8,7 @@ let counter = 0;
 
 async function init(){
 
-    gpio.setup(8, gpio.DIR_OUT)
+    gpio.setup(3, gpio.DIR_OUT)
     gpio.setup(11, gpio.DIR_OUT)
     gpio.setup(12, gpio.DIR_OUT)
     gpio.setup(15, gpio.DIR_OUT)
@@ -31,7 +31,7 @@ function clanp(x){
 async function outGPIO(pitch, yaw, hover, on, counter){
     if(on){
         console.log('hover')
-        gpio.write(8, hover);
+        gpio.write(3, hover);
 
         const right = clanp(pitch * 0.7 + yaw * 0.7);
         const left = clanp(pitch * 0.7 + yaw * (-0.7));
@@ -66,7 +66,7 @@ async function outGPIO(pitch, yaw, hover, on, counter){
         }
     } else {
         console.log('down')
-        gpio.write(8, false);
+        gpio.write(3, false);
         gpio.write(11, false);
         gpio.write(12, false);
         gpio.write(15, false);
