@@ -24,15 +24,18 @@ async function outGPIO(pitch, yaw, hover, on, counter){
     }
 }
 
-socket = io.connect('http://localhost:3000'); 
+socket = io.connect('http://192.168.100.19:3000'); 
 socket.on('connect', () => {
     socket.emit('get');
 });
 
-socket.on('controll', (data) => {
-    controll = JSON.parse(data);
-    console.log(data);
-    socket.emit('get');
-    counter = counter + 1 % 10;
-    outGPIO(controll.pitch, controll.yaw, controll.hoverFlag, controll.onFlag, counter);
-});
+(async () => {
+    await init();
+    socket.on('controll', (data) => {
+        controll = JSON.parse(data);
+        console.log(data);
+        socket.emit('get');
+        counter = counter + 1 % 10;
+        outGPIO(controll.pitch, controll.yaw, controll.hoverFlag, controll.onFlag, counter);
+    });
+})();
