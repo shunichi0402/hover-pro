@@ -39,29 +39,29 @@ async function outGPIO(pitch, yaw, hover, on, counter){
         if (parseInt(right * 10) > counter) {
             gpio.write(11, true);
             gpio.write(12, false);
-            print('right on');
+            console.log('right on');
         } else if (parseInt(right * (-10)) > counter) {
             gpio.write(11, false);
             gpio.write(12, true);
-            print('right revarse');
+            console.log('right revarse');
         } else {
             gpio.write(12, false);
             gpio.write(12, false);
-            print('right off');
+            console.log('right off');
         }
 
         if (parseInt(left * 10) > counter) {
             gpio.write(15, true);
             gpio.write(16, false);
-            print('left on');
+            console.log('left on');
         } else if (parseInt(left * (-10)) > counter) {
             gpio.write(15, false);
             gpio.write(16, true);
-            print('left revarse');
+            console.log('left revarse');
         } else {
             gpio.write(15, false);
             gpio.write(16, false);
-            print('left off');
+            console.log('left off');
         }
     } else {
         console.log('down')
