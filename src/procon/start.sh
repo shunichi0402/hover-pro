@@ -1,3 +1,6 @@
-cd /home/pi/hover-pro/src/procon
-SERVER_URL="http://192.168.100.19:3000"
-node client.js
+#!/bin/bash
+cd /home/pi/hover-pro/
+git pull
+cd /home/pi/hover-pro/src/procon/
+npm i
+node clinet.js
