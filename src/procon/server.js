@@ -23,7 +23,7 @@ let onFlag = false;
 pyshell.on('message', function (message) {
     const json = JSON.parse(message.replace(/\'/g, '"'))
     // console.log(joycon.accel);
-    // console.log(json);
+    console.log('battery', json.battery.level);
     let yaw = (json.accel.x / 5000);
     let pitch = (json.accel.y / 5000);
     let home = json.buttons.left.down == 1;
