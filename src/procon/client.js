@@ -35,7 +35,7 @@ async function outGPIO(pitch, yaw, hover, on, counter){
         gpio.write(7, hover);
         gpio.write(8, false);
 
-        const right = clanp(pitch * 1.2 + yaw * (1.2));
+        const right = clanp(pitch * 1.2 + yaw * (-1.2));
         const left = clanp(pitch * 1.2 + yaw * (1.2));
         console.log(counter, parseInt(right * 10), parseInt(left * 10))
 
