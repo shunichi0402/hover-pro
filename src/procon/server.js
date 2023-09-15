@@ -6,6 +6,7 @@ io.on('connection', (socket) => {
     console.log(socket.id);
     socket.on('get', () => {
         console.log('get');
+        console.log('battery', battery);
         socket.emit('controll', JSON.stringify(joycon))
     })
 });
@@ -13,6 +14,7 @@ io.on('connection', (socket) => {
 const pyshell = new PythonShell('./test.py');
 
 let joycon = {yaw:0, pitch:0, hoverFlag:false, onFlag:false}
+let battery = 0;
 
 pyshell.send();
 
@@ -23,7 +25,7 @@ let onFlag = false;
 pyshell.on('message', function (message) {
     const json = JSON.parse(message.replace(/\'/g, '"'))
     // console.log(joycon.accel);
-    console.log('battery', json.battery.level);
+    battery = json.battery.level
     let yaw = (json.accel.x / 5000);
     let pitch = (json.accel.y / 5000);
     let home = json.buttons.left.down == 1;
